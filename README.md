@@ -37,3 +37,11 @@ You can override Variables.js to supply your own variables
 
 unary minus is higher precedence than exponentiation, so -1**-2 === (-1)**(-2), not -(1**(-2))
 
+## Testing
+
+The tests rely on [mocha](http://visionmedia.github.com/mocha/) and [should](https://github.com/visionmedia/should.js/)
+
+To run them:
+
+    $ mocha
+
