@@ -1,7 +1,7 @@
 var should = require('should');
 var _ = require('underscore')._;
-var Token = require('../Token.js').Token;
-var Types = require('../Token.js').Types;
+var Token = require('../lib/Lexer/Token.js').Token;
+var Types = require('../lib/Lexer/Token.js').Types;
 
 describe('Token', function() {
     describe('#Token()', function() {
@@ -45,30 +45,26 @@ describe('Token', function() {
     });
 
     describe('#is()', function() {
-        var t = new Token(Types.Value, 3);
+        var t = new Token(Types.Number, 3);
         t.is().should.be.false;
         t.is(Types.Operator).should.be.false;
-        t.is(Types.Value).should.be.true;
-        t.is(Types.Value, 4).should.be.false;
-        t.is(Types.Value, 3).should.be.true;
-        t.is(Types.Value, "3").should.be.false;
+        t.is(Types.Number).should.be.true;
+        t.is(Types.Number, 4).should.be.false;
+        t.is(Types.Number, 3).should.be.true;
+        t.is(Types.Number, "3").should.be.false;
     });
 });
 
 describe('Types', function() {
-    describe('#symbols()', function() {
-        it('should contain the right enumerated values', function () {
-            Types.symbols().should.have.length(8);
-            Types.symbols().should.eql(_.map(['Operator', 'Value', 'Symbol', '(', ')', ',', 'Function', 'Unary-'], function(x) {
-                return new Symbol(x);
-            }));
+    it('should contain the right enumerated values', function () {
+        _.keys(Types).should.have.length(7);
+        _.each(['Operator', 'LeftParen', 'RightParen', 'Comma', 'Number', 'Symbol', 'Whitespace'], function (t) {
+            Types.should.have.property(t, t);
         });
     });
 
-    describe('type safety', function() {
-        it('should allow strict comparison of enumerated values', function () {
-            should.notStrictEqual(Types.Operator, Types.Number);
-            should.strictEqual(Types.Operator, Types.Operator);
-        });
+    it('should allow strict comparison of enumerated values', function () {
+        should.notStrictEqual(Types.Operator, Types.Number);
+        should.strictEqual(Types.Operator, Types.Operator);
     });
 });
