@@ -56,14 +56,15 @@ describe('Token', function() {
 });
 
 describe('Types', function() {
-    it('should contain the right enumerated values', function () {
-        _.keys(Types).should.have.length(7);
-        _.each(['Operator', 'LeftParen', 'RightParen', 'Comma', 'Number', 'Symbol', 'Whitespace'], function (t) {
+    it('should contain the right enumerated values', function() {
+        _.keys(Types).should.have.length(10);
+        var types = ['Operator', 'LeftParen', 'RightParen', 'Comma', 'Number', 'Symbol', 'Variable', 'Function', 'Constant', 'Whitespace'];
+        _.each(types, function(t) {
             Types.should.have.property(t, t);
         });
     });
 
-    it('should allow strict comparison of enumerated values', function () {
+    it('should allow strict comparison of enumerated values', function() {
         should.notStrictEqual(Types.Operator, Types.Number);
         should.strictEqual(Types.Operator, Types.Operator);
     });

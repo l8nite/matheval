@@ -3,7 +3,7 @@ var _ = require('underscore')._;
 
 var Token = require('../lib/Token.js').Token;
 var Types = require('../lib/Token.js').Types;
-var Lexer = require('../lib/Lexer/Lexer.js').Lexer;
+var Lexer = require('../lib/Lexer.js').Lexer;
 var Operators = require('../lib/Operators.js').LexableOperators;
 
 var testLexSingleToken = function(type, value, expression) {
@@ -26,12 +26,6 @@ describe('Lexer', function() {
         it('should construct a new Lexer', function() {
             var l = new Lexer();
             l.should.be.an.instanceof(Lexer);
-
-            l.should.have.property('peek');
-            l.peek.should.be.a('function');
-
-            l.should.have.property('next');
-            l.next.should.be.a('function');
 
             l.should.have.property('tokenize');
             l.tokenize.should.be.a('function');
