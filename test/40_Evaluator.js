@@ -35,6 +35,12 @@ describe('Evaluator', function() {
             throw ();
         });
 
+        it('should memorize variables in the same instance', function() {
+            hpcalc.evaluate('x=1').should.equal(1);
+            hpcalc.evaluate('x+1').should.equal(2);
+            hpcalc.evaluate('x').should.equal(1);
+        });
+
         var tests = {
             '1 + 1': 2,
             'max(1,2,3,2,1,0,-1)': 3,
