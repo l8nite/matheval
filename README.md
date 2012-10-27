@@ -13,10 +13,27 @@ Supports variables, parentheses, basic functions.
     $ npm install matheval
 
 ## Notes
-    evaluate() calls are queued and processed in order
+evaluate() calls are queued and processed in order
 
-    You can override Variables.js to supply your own variables
-    (for example, you can load them from a database or something)
+You can override Variables.js to supply your own variables
+(for example, you can load them from a database or something)
 
-    unary minus is higher precedence than exponentiation, so -1^-2 === (-1)^(-2), not -(1^(-2))
+    var matheval = require('matheval');
+
+    var MyVars = function () {
+    };
+
+    require('util').inherits(MyVars, matheval.Variables);
+
+    MyVars.prototype.load = function (doneLoading) {
+        // populate this.variables hash
+        doneLoading();
+    };
+
+    MyVars.prototype.save = function (doneSaving) {
+        // save this.variables hash
+        doneSaving();
+    };
+
+unary minus is higher precedence than exponentiation, so -1**-2 === (-1)**(-2), not -(1**(-2))
 

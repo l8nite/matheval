@@ -1,7 +1,7 @@
 var should = require('should');
 var _ = require('underscore')._;
-var Token = require('../lib/Lexer/Token.js').Token;
-var Types = require('../lib/Lexer/Token.js').Types;
+var Token = require('../lib/Token.js').Token;
+var Types = require('../lib/Token.js').Types;
 
 describe('Token', function() {
     describe('#Token()', function() {

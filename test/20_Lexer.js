@@ -1,8 +1,8 @@
 var should = require('should');
 var _ = require('underscore')._;
 
-var Token = require('../lib/Lexer/Token.js').Token;
-var Types = require('../lib/Lexer/Token.js').Types;
+var Token = require('../lib/Token.js').Token;
+var Types = require('../lib/Token.js').Types;
 var Lexer = require('../lib/Lexer/Lexer.js').Lexer;
 var Operators = require('../lib/Operators.js').LexableOperators;
 
