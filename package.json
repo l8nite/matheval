@@ -1,15 +1,15 @@
 {
-  "name": "matheval",
-  "version": "0.0.1",
-  "description": "Math expression evaluator",
-  "homepage": "http://github.com/l8nite/matheval",
-  "author": "Shaun Guth <shaun.guth@gmail.com>",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/l8nite/matheval.git"
-  },
-  "dependencies": {
-    "underscore": "~1.4.2",
-    "should": "~1.2.0"
-  }
+    "name": "matheval",
+    "version": "0.0.1",
+    "description": "Math expression evaluator",
+    "homepage": "http://github.com/l8nite/matheval",
+    "author": "Shaun Guth <shaun.guth@gmail.com>",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/l8nite/matheval.git"
+    },
+    "dependencies": {
+        "underscore": "~1.4.2",
+        "should": "~1.2.0"
+    }
 }

@@ -7,53 +7,43 @@ var Types = require('../lib/Token.js').Types;
 var Parser = require('../lib/Parser.js').Parser;
 
 describe('Parser', function() {
+    var parser = new Parser();
     describe('#Parser()', function() {
         it('should construct a new Parser', function() {
-            var l = new Parser();
-            l.should.be.an.instanceof(Parser);
+            parser = new Parser();
+            parser.should.be.an.instanceof(Parser);
 
-            l.should.have.property('parse');
-            l.parse.should.be.a('function');
+            parser.should.have.property('parse');
+            parser.parse.should.be.a('function');
 
-            should.ok(l.hasOwnProperty('tokens'));
-            should.deepEqual(l.tokens, []);
+            should.ok(parser.hasOwnProperty('tokens'));
+            should.deepEqual(parser.tokens, []);
         });
     });
 
     describe('#tokenize(expression)', function() {
         it('should throw errors on functions with incorrect # of arguments', function() {
             (function() {
-                (new Parser()).parse('sin(1,2)');
+                parser.parse('sin(1,2)');
             }).should.
             throw ();
         });
 
-        it('should parse "1 + 1" to "1 1 +"', function () {
-            var p = new Parser('1 + 1');
-            var expected = '1 1 +';
-            var actual = _.pluck(p.tokens, 'value').join(' ');
-            actual.should.equal(expected);
-        });
+        var validParses = {
+            '1 + 1': '1 1 +',
+            'x = max(a, b, c+d, sin(pi+3))': 'x a b c d + pi 3 + 1 sin 4 max =',
+            'x**y^z': 'x y z ^ **',
+            'x = random() * 1': 'x 0 random 1 * =',
+            '-1 + -max(-1, -2)': '1 Unary- 1 Unary- 2 Unary- 2 max Unary- +',
+        };
 
-        it('should parse "x = max(a, b, c+d, sin(pi+3))"', function() {
-            var p = new Parser('x = max(a, b, c+d, sin(pi+3))');
-            var expected = 'x a b c d + pi 3 + 1 sin 4 max =';
-            var actual = _.pluck(p.tokens, 'value').join(' ');
-            actual.should.equal(expected);
-        });
-
-        it('should handle right-associativity of exponentiation', function() {
-            var p = new Parser('x**y^z');
-            var expected = 'x y z ^ **';
-            var actual = _.pluck(p.tokens, 'value').join(' ');
-            actual.should.equal(expected);
-        });
-
-        it('should handle zero-argument functions', function() {
-            var p = new Parser('x = random() * 1');
-            var expected = 'x 0 random 1 * =';
-            var actual = _.pluck(p.tokens, 'value').join(' ');
-            actual.should.equal(expected);
+        _.each(validParses, function(value, key) {
+            it('should parse "' + key + '" -> "' + value + '"', function () {
+                parser.parse(key);
+                var expected = value;
+                var actual = _.pluck(parser.tokens, 'value').join(' ');
+                actual.should.equal(expected);
+            });
         });
     });
 });
