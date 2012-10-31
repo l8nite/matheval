@@ -41,6 +41,12 @@ describe('Evaluator', function() {
             hpcalc.evaluate('x').should.equal(1);
         });
 
+        it('should not concatenate strings when adding', function() {
+            hpcalc.variables.set('x', "5");
+            var actual = hpcalc.evaluate('x+1');
+            actual.should.equal(6);
+        });
+
         var tests = {
             '1 + 1': 2,
             'max(1,2,3,2,1,0,-1)': 3,
