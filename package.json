@@ -1,6 +1,6 @@
 {
     "name": "matheval",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "description": "Math expression evaluator",
     "homepage": "http://github.com/l8nite/matheval",
     "author": "Shaun Guth <shaun.guth@gmail.com>",
