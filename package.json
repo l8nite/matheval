@@ -10,7 +10,13 @@
     },
     "main": "./matheval.js",
     "dependencies": {
-        "underscore": "~1.4.2",
-        "should": "~1.2.0"
+        "underscore": "~1.4.2"
+    },
+    "devDependencies": {
+        "should": "~1.2.0",
+        "mocha": "~1.9.0" 
+    },
+    "scripts": {
+        "test": "mocha"
     }
 }
