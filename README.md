@@ -37,5 +37,5 @@ The tests rely on [mocha](http://visionmedia.github.com/mocha/) and [should](htt
 
 To run them:
 
-    $ mocha
+    $ npm test
 
