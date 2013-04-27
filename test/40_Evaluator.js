@@ -54,6 +54,8 @@ describe('Evaluator', function() {
             '-1+1+-1+1': 0,
             '-5%4': 3,
             '1^2*3/4%5+6-7': -.25,
+            '-0xA + 3': -7,
+            '-0b10 + 2': 0,
         };
 
         _.each(tests, function(value, key) {

@@ -55,6 +55,18 @@ describe('Lexer', function() {
             it("should tokenize '" + number + "'", testLexSingleToken(Types.Number, + number, number));
         });
 
+        _.each(['0xA', '0X10', '0xa'], function(number) {
+            it("should hex tokenize '" + number + "'", testLexSingleToken(Types.Number, + number, number));
+        });
+
+        _.each(['0b10', '0B10', '0b101'], function(number) {
+            it("should binary tokenize '" + number + "'", testLexSingleToken(Types.Number, parseInt(number.substr(2), 2), number));
+        });
+
+        _.each(['0o10', '0O07', '0O16'], function(number) {
+            it("should octal toeknize '" + number + "'", testLexSingleToken(Types.Number, parseInt(number.substr(2), 8), number));
+        });
+
         _.each(['_', 'x', '_x', '_X', 'x_', 'X_', 'x1', 'X1', 'x.y', 'X.Y', 'x.Y', 'X.y'], function(symbol) {
             it("should tokenize '" + symbol + "'", testLexSingleToken(Types.Symbol, symbol, symbol));
         });
