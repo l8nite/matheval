@@ -52,11 +52,11 @@ describe('Lexer', function() {
         it('should ignore whitespace', testLexSingleToken(Types.Operator, '+', '   +   '));
 
         _.each(['0', '1', '0.1', '.1', '1e1', '1.1e1', '11', '1.01'], function(number) {
-            it("should tokenize '" + number + "'", testLexSingleToken(Types.Number, + number));
+            it("should tokenize '" + number + "'", testLexSingleToken(Types.Number, + number, number));
         });
 
         _.each(['_', 'x', '_x', '_X', 'x_', 'X_', 'x1', 'X1', 'x.y', 'X.Y', 'x.Y', 'X.y'], function(symbol) {
-            it("should tokenize '" + symbol + "'", testLexSingleToken(Types.Symbol, symbol));
+            it("should tokenize '" + symbol + "'", testLexSingleToken(Types.Symbol, symbol, symbol));
         });
 
         it('should tokenize left parens', testLexSingleToken(Types.LeftParen, '('));
