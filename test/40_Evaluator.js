@@ -66,4 +66,12 @@ describe('Evaluator', function() {
             });
         });
     });
+
+    describe('assignment without LHS', function() {
+        it('should throw an error', function() {
+            (function() { hpcalc.evaluate('= sin') }).should.throw();
+            (function() { hpcalc.evaluate('= sin 3') }).should.throw();
+            (function() { hpcalc.evaluate('= sin') }).should.throw();
+        });
+    });
 });
