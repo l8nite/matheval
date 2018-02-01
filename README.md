@@ -33,7 +33,7 @@ exponentiation is right-associative, so 3**3**3 is 3**27, not 9**3
 
 ## Testing
 
-The tests rely on [mocha](http://visionmedia.github.com/mocha/) and [should](https://github.com/visionmedia/should.js/)
+The tests rely on [mocha](http://mochajs.org/) and [should](https://github.com/visionmedia/should.js/)
 
 To run them:
 
